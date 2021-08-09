@@ -1,16 +1,23 @@
 import React from "react";
 import styled from "styled-components";
+import TodoItem from "./TodoItem";
 
 const TodoListBlock = styled.div`
   flex: 1;
-  padding: 30px 32px;
+  padding: 20px 32px;
   padding-bottom: 48px;
   overflow-y: auto;
-  background: gray;
 `;
 
 function TodoList() {
-  return <TodoListBlock>Hello React!</TodoListBlock>;
+  return (
+    <TodoListBlock>
+      <TodoItem done={true} text="Create the project"></TodoItem>
+      <TodoItem done={true} text="Styling the components"></TodoItem>
+      <TodoItem done={false} text="Develop the logic"></TodoItem>
+      <TodoItem done={false} text="Implement the features"></TodoItem>
+    </TodoListBlock>
+  );
 }
 
 export default TodoList;
