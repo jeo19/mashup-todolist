@@ -76,7 +76,7 @@ const Input = styled.input`
 
 function TodoCreate() {
   const [open, setOpen] = useState(false);
-  const onToggle = () => setOpen(true);
+  const onToggle = () => setOpen(!open);
 
   return (
     <>
@@ -87,7 +87,7 @@ function TodoCreate() {
           </InsertForm>
         </InsertFormPositioner>
       )}
-      <CircleButton onClick={onToggle}>
+      <CircleButton onClick={onToggle} open={open}>
         <MdAdd />
       </CircleButton>
     </>
