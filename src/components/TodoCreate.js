@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled, { css } from "styled-components";
 import { MdAdd } from "react-icons/md";
 
@@ -75,7 +75,23 @@ const Input = styled.input`
 `;
 
 function TodoCreate() {
-  return <div>Hello React!</div>;
+  const [open, setOpen] = useState(false);
+  const onToggle = () => setOpen(true);
+
+  return (
+    <>
+      {open && (
+        <InsertFormPositioner>
+          <InsertForm>
+            <Input autoFocus placeholder="Please Enter,after the todo add" />
+          </InsertForm>
+        </InsertFormPositioner>
+      )}
+      <CircleButton onClick={onToggle}>
+        <MdAdd />
+      </CircleButton>
+    </>
+  );
 }
 
 export default TodoCreate;
