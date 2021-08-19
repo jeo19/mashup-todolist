@@ -32,10 +32,17 @@ const TodoHeadBlock = styled.div`
 function TodoHead() {
   const todos = useTodoState();
   const undoneTasks = todos.filter((todo) => !todo.done);
+  const today = new Date();
+  const dateString = today.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+  const dayName = today.toLocaleDateString("en-US", { weekday: "long" });
   return (
     <TodoHeadBlock>
-      <h1>2021/08/05</h1>
-      <div className="day">Thursday</div>
+      <h1>{dateString}</h1>
+      <div className="day">{dayName}</div>
       <div className="tasks-left">Remained {undoneTasks.length} works!</div>
     </TodoHeadBlock>
   );
