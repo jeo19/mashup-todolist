@@ -31,12 +31,12 @@ const TodoHeadBlock = styled.div`
 
 function TodoHead() {
   const todos = useTodoState();
-  console.log(todos);
+  const undoneTasks = todos.filter((todo) => !todo.done);
   return (
     <TodoHeadBlock>
       <h1>2021/08/05</h1>
       <div className="day">Thursday</div>
-      <div className="tasks-left">Remained 2 works!</div>
+      <div className="tasks-left">Remained {undoneTasks.length} works!</div>
     </TodoHeadBlock>
   );
 }
