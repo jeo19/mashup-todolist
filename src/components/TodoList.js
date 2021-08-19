@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import TodoItem from "./TodoItem";
+import { useTodoState } from "../TodoContext";
 
 const TodoListBlock = styled.div`
   flex: 1;
@@ -10,12 +11,18 @@ const TodoListBlock = styled.div`
 `;
 
 function TodoList() {
+  const todos = useTodoState();
+
   return (
     <TodoListBlock>
-      <TodoItem done={true} text="Create the project"></TodoItem>
-      <TodoItem done={true} text="Styling the components"></TodoItem>
-      <TodoItem done={false} text="Develop the logic"></TodoItem>
-      <TodoItem done={false} text="Implement the features"></TodoItem>
+      {todos.map((todo) => (
+        <TodoItem
+          key={todo.id}
+          id={todo.id}
+          done={todo.done}
+          text={todo.text}
+        ></TodoItem>
+      ))}
     </TodoListBlock>
   );
 }
